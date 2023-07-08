@@ -24,3 +24,62 @@ html, body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+.search-bar-container {
+    padding-top: 20vh;
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    min-width: 200px;
+}
+
+.input-wrapper {
+    background-color: white;
+    width: 100%;
+    border-radius: 10px;
+    height: 2.5rem;
+    padding: 0 15px;
+    box-shadow: 0 0 8px #ddd;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar-input {
+    background-color: transparent;
+    border: none;
+    height: 100%;
+    font-size: 1.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.search-bar-input:focus {
+    outline: none;
+}
+
+.results-list {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 8px #ddd;
+    border-radius: 10px;
+    margin-top: 1rem;
+    max-height: 300px;
+    overflow-y: scroll;
+    font-family: Courier, monospace;
+}
+
+.search-result {
+    padding: 10px 20px;
+}
+
+.search-result:hover {
+    background-color: #efefef;
+}
+
+#search-icon {
+    color: royalblue;
+}

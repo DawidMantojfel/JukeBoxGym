@@ -38,7 +38,7 @@ export default class HomePage extends Component {
             <Grid container spacing={3}>
                 <Grid item xs={12} align="center">
                     <Typography variant="h3" compact="h3">
-                        House Party
+                        Jukebox Gym
                     </Typography>
                 </Grid>
                 <Grid item xs={12} align="center">
@@ -72,8 +72,6 @@ export default class HomePage extends Component {
                         exact
                         path="/"
                         render={() => {
-                            if (this.state.roomCode) {
-                            }
                             return this.state.roomCode ? (
                                 <Redirect to={`/room/${this.state.roomCode}`}/>
                             ) : (

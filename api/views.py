@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics, status
-from .serializers import RoomSerializer, CreateRoomSerializer, UpdateRoomSerializer
-from .models import Room
+from .serializers import RoomSerializer, CreateRoomSerializer, UpdateRoomSerializer, GymEntitySerializer
+from .models import Room, GymEntity
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import JsonResponse
@@ -30,6 +30,20 @@ class GetRoom(APIView):
             return Response({'Room Not Found': 'Invalid Room Code.'}, status=status.HTTP_404_NOT_FOUND)
 
         return Response({'Bad Request': 'Code paramater not found in request'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class GetGymEntities(APIView):
+    search_query = 'search'
+    serializer_class = GymEntitySerializer
+
+    def get(self, request, format=None):
+        search_query = request.GET.get(self.search_query)
+        if search_query:
+            gym_entities = GymEntity.objects.filter(name__icontains=search_query).values()
+            if len(gym_entities):
+                return Response(gym_entities, status.HTTP_200_OK)
+            return Response({'Gym Not Found': 'Invalid search query'}, status.HTTP_204_NO_CONTENT)
+        return Response({'Bad Request': 'No search query'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class JoinRoom(APIView):

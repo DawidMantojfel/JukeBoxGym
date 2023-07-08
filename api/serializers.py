@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Album, Artist, Song, Room
+from .models import Album, Artist, Song, Room, GymEntity
 
 
 class AlbumSerializer(serializers.ModelSerializer):
@@ -22,6 +22,12 @@ class RoomSerializer(serializers.ModelSerializer):
         model = Room
         fields = ('id', 'code', 'host', 'guest_can_pause',
                   'votes_to_skip', 'created_at')
+
+
+class GymEntitySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GymEntity
+        fields = ('name', 'created_at', 'location', 'city')
 
 
 class CreateRoomSerializer(serializers.ModelSerializer):

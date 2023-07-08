@@ -1,20 +1,18 @@
-import React, {Component} from "react";
-import {render} from "react-dom";
-import HomePage from "./HomePage";
+import React, { useState } from "react";
+import { render } from "react-dom";
+import { SearchBar } from "./SearchBar";
+import { SearchResultsList } from "./SearchResultsList";
 
-export default class App extends Component {
-    constructor(props) {
-        super(props);
-    }
+const App = () => {
+  const [results, setResults] = useState([]);
 
-    render() {
-        return (
-            <div className="center">
-                <HomePage/>
-            </div>
-        );
-    }
-}
+  return (
+    <div className="search-bar-container">
+      <SearchBar setResults={setResults} />
+      <SearchResultsList results={results} />
+    </div>
+  );
+};
 
 const appDiv = document.getElementById("app");
-render(<App/>, appDiv);
+render(<App />, appDiv);
