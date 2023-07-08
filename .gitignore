@@ -3,3 +3,4 @@ venv
 *.pyc
 ./frontend/node_modules
 /.idea/
+./frontend/static/frontend
