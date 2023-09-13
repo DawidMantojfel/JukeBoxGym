@@ -46,6 +46,25 @@ class GetGymEntities(APIView):
         return Response({'Bad Request': 'No search query'}, status=status.HTTP_400_BAD_REQUEST)
 
 
+class GetGymRooms(APIView):
+    def get(self, request, format=None):
+        gym_name = request.GET.get('gym-name')
+
+        if not gym_name:
+            return Response({"Invalid request": "No gym name given in query"}, status=status.HTTP_400_BAD_REQUEST)
+
+        gym_rooms_data = []
+
+        gym = GymEntity.objects.filter(name=gym_name).first()
+        if gym is not None:
+            gym_rooms = gym.room_set.all()
+            rooms = RoomSerializer(gym_rooms, many=True)
+            gym_rooms_data.append({"gymName": gym_name, "rooms": rooms.data})
+
+        return Response(gym_rooms_data, status=status.HTTP_200_OK)
+
+
+
 class JoinRoom(APIView):
     lookup_url_kwarg = 'code'
 

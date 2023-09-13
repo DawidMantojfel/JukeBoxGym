@@ -1,21 +1,33 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-export const SearchResult = ({ result, value }) => {
-  const formatName = () => {
-    const name = result.name;
 
-    const regex = new RegExp(value, 'i'); // Utworzenie wyrażenia regularnego z wartości
+export default class SearchResult extends Component {
+    constructor(props) {
+        super(props);
+        this.result = this.props.result;
+        this.searchValue = this.props.searchValue;
+        this.setGymName = this.props.setGymName;
+        this.formatName = this.formatName.bind(this);
+    }
 
-    const formattedName = name.replace(regex, (match) => `<strong>${match}</strong>`);
+    formatName() {
+        const name = this.result.name;
 
-    return { __html: formattedName };
-  };
+        const regex = new RegExp(this.searchValue, 'i');
 
-  return (
-    <div
-      className="search-result"
-      onClick={(e) => alert(`You clicked on ${result.name}`)}
-      dangerouslySetInnerHTML={formatName()}
-    ></div>
-  );
+        const formattedName = name.replace(regex, (match) => `<strong>${match}</strong>`);
+
+        return {__html: formattedName};
+    };
+
+    render() {
+        return (
+            <div
+                className="search-result"
+                onClick={() => this.setGymName(this.result.name)}
+                dangerouslySetInnerHTML={this.formatName()}
+            >
+            </div>
+        );
+    }
 };

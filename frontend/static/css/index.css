@@ -19,20 +19,37 @@ html, body {
 }
 
 .center {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     transform: translate(-50%, -50%);
 }
 
 .search-bar-container {
     padding-top: 20vh;
-    width: 40%;
-    margin: auto;
+    /*width: 60%;*/
+    /*margin: 40px auto 0;*/
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    /*min-width: 200px;*/
+}
+
+.search-results-container {
+    /*margin: 0 50px;*/
     display: flex;
     flex-direction:column;
     align-items: center;
     min-width: 200px;
+}
+
+.search-bar-wrapper {
+    margin: 0 50px; /* Margines po lewej i prawej stronie */
+}
+
+.search-result-wrapper {
+    margin: 0 20px; /* Margines po lewej i prawej stronie */
 }
 
 .input-wrapper {
@@ -82,4 +99,13 @@ html, body {
 
 #search-icon {
     color: royalblue;
+}
+
+.gym-rooms-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    align-self: center;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
 }

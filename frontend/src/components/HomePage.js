@@ -26,7 +26,6 @@ export default class HomePage extends Component {
         fetch("/api/user-in-room")
             .then((response) => response.json())
             .then((data) => {
-                console.log("<><> HomePage.js <><> room code from data is" + data.code)
                 this.setState({
                     roomCode: data.code,
                 });
